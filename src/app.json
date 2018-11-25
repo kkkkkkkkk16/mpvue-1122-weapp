@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/books/main",
-    "pages/me/main",
-    "pages/comments/main"
+    "pages/comments/main",
+     "pages/me/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -22,13 +22,11 @@
       "text": "评论",
       "iconPath": "static/img/todo.png",
       "selectedIconPath": "static/img/todo-active.png"
-    },{
-        
-            "pagePath": "pages/me/main",
-            "text": "我",
-            "iconPath": "static/img/me.png",
-            "selectedIconPath": "static/img/me-active.png"
-          
+    }, {
+      "pagePath": "pages/me/main",
+      "text": "我",
+      "iconPath": "static/img/me.png",
+      "selectedIconPath": "static/img/me-active.png"
     }]
   }
 

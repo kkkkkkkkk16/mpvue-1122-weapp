@@ -1,20 +1,26 @@
-
 <script>
-import config from "./config";
-export default {
-  created() {
-    console.log("aaaa");
-    wx.request({
-      url: config.host + "/weapp/demo", //仅为示例，并非真实的接口地址
-      
-      success(res) {
-        console.log(res);
-      }
-    });
-  }
-};
-</script>
+// import config from "./config";
+import { get } from './util'
+import qcloud from 'wafer2-client-sdk'
+import config from './config';
 
+export default {
+  async created () {
+    // const res = await get('/weapp/demo')
+
+    // console.log(res.data)
+    // qcloud.setLoginUrl(config.loginUrl);
+    // qcloud.login({
+    //   success: function(userInfo){
+    //     console.log('login success',userInfo)
+    //   },
+    //   fail:function(err){
+    //     console.log('login fail',err)
+    //   }
+    // })
+  }
+}
+</script>
 
 
 <style>

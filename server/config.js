@@ -15,7 +15,7 @@ const CONF = {
       qcloudSecretKey: 'wd5WlpdDakfMn02pNjrlPnxve9PRGqBR',
       wxMessageToken: 'weixinmsgtoken',
       networkTimeout: 30000,
-  
+
 
     port: '5757',
     rootPathname: '',

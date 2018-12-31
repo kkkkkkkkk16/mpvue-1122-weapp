@@ -2,6 +2,8 @@ const https = require('https');
 //  新增图书
 // 1.获取豆瓣信息
 // 2.入库
+// 在使用数据库时候，记得配置config.js中的mysql连接
+// 若为空数据库，则运行tools下的sql文件
 module.exports = async (ctx) => {
     const {isbn, openid} = ctx.request.body;
     if (isbn && openid) {

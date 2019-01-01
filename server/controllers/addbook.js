@@ -1,11 +1,12 @@
 const https = require('https');
+const { mysql } = require('../qcloud');
 //  新增图书
 // 1.获取豆瓣信息
 // 2.入库
 // 在使用数据库时候，记得配置config.js中的mysql连接
 // 若为空数据库，则运行tools下的sql文件
 module.exports = async (ctx) => {
-    const {isbn, openid} = ctx.request.body;
+    const { isbn, openid } = ctx.request.body;
     if (isbn && openid) {
         let url = 'https://api.douban.com/v2/book/isbn/' + isbn;
         const bookinfo = await getJSON(url);
@@ -15,12 +16,29 @@ module.exports = async (ctx) => {
         const tags = bookinfo.tags.map(v => {
             return `${v.title}${v.count}`
         }).join(',');
+
         const author = bookinfo.author.join(',');
+        try {
+            await mysql('books').insert({
+                isbn, openid, rate, title, image, alt, publisher, summary, price, tags, author
+            })
+            ctx.state.data = {
+                title,
+                msg: 'success'
+            }
+        } catch (e) {
+            ctx.state = {
+                code : -1,
+                data: {
+                    msg: '新增失败' + e.sqlMessage
+                }
+            }
+        }
         console.log(rate, title, image, alt, publisher, summary, price, tags, author)
     }
 };
 
-function getJSON (url) {
+function getJSON(url) {
     return new Promise((resolve, reject) => {
         https.get(url, res => {
             let urlData = '';

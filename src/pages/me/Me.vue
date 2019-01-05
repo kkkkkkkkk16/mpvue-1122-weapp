@@ -16,7 +16,7 @@
 
 <script>
   import config from '@/config'
-import { showSuccess, post } from '@/util'
+import { showSuccess, post,showModal } from '@/util'
 import YearProgress from '@/components/YearProgress'
 
 const qcloud = require('wafer2-client-sdk')
@@ -44,10 +44,12 @@ export default {
           isbn,
           openid: this.userinfo.openId
         })
-        if (res.code === 0 && res.data.title) {
-          showSuccess('添加成功', `${res.data.title}添加成功`)
+        // showModal('添加成功', `${res.data.title}添加成功`)
+        if (res.data.code === 0 && res.data.data.title) {
+          showModal('添加成功', `${res.data.data.title}添加成功`)
+          console.log({form:"addBook",success:"addsuccess"})
         } else {
-          console.log(res)
+          console.log({form:"addBookerr", res})
         }
       },
       scanBook () {
@@ -56,7 +58,7 @@ export default {
             if (res.result) {
               this.addBook(res.result)
             }
-            console.log(res)
+            console.log({form :"scanBook",res})
           }
         })
       },

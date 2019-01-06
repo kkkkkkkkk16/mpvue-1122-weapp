@@ -1,7 +1,7 @@
 <template>
  <div class="progressbar">jindutiao
    <progress :percent="percent" activeColor="#EA5A49" show-info />
-   <p> 啊 {{year}} 年已经过去了{{days}}天 </p>
+   <p>  {{year}} 年已经过去了{{days}}天 </p>
  </div>
 
 </template>

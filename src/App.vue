@@ -24,6 +24,9 @@ export default {
 
 
 <style>
+.text-primary{
+  color: #EA5A49;
+}
   .btn  {
     color: #ffffff;
     background: #EA5A49;

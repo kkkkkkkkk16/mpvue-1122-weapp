@@ -67,6 +67,10 @@ module.exports = {
         loader: 'mpvue-loader',
         options: vueLoaderConfig
       },
+      // {
+      //   test: /\.less$/,
+      //   loader: "style-loader!css-loader!less-loader",
+      // },
       {
         test: /\.js$/,
         include: [resolve('src'), resolve('test')],
@@ -112,8 +116,8 @@ module.exports = {
       from: '**/*.json',
       to: ''
     }], {
-      context: 'src/'
-    }),
+        context: 'src/'
+      }),
     new CopyWebpackPlugin([{
       from: path.resolve(__dirname, '../static'),
       to: path.resolve(config.build.assetsRoot, './static'),

@@ -24,6 +24,11 @@ export default {
 
 
 <style>
+.text-footer{
+  text-align: center;
+  font-size: 12px;
+  
+}
 .text-primary{
   color: #EA5A49;
 }

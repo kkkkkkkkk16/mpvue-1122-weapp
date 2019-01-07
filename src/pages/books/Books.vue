@@ -21,7 +21,7 @@ export default {
       books: [],
       page: 0,
       more: true,
-      tops:[]
+      tops:[],
     };
   },
   methods: {
@@ -41,7 +41,6 @@ export default {
       }
       if (init) {
         this.books = booklist.data.data.list;
-        console.log(booklist.data.data.list);
         wx.stopPullDownRefresh();
       } else {
         this.books = this.books.concat(booklist.data.data.list);
@@ -49,14 +48,14 @@ export default {
       wx.hideNavigationBarLoading();
     },
     async getTop(){
-      const tops = get('/weapp/top')
-      this.tops = tops.data.list;
-      console.log(tops.data.list)
+      const tops = await get('/weapp/top')
+      this.tops = tops.data.data.list;
+      console.log( this.tops)
     }
   },
   mounted() {
     this.getList(true);
-    this.getTop();
+    this.getTop(); 
   },
   onPullDownRefresh() {
     this.getList(true);

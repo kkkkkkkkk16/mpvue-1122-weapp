@@ -11,7 +11,7 @@
       <div :key='imgindex' v-for='(top,imgindex) in imgUrls'>
         <swiper-item>
           <img  
-           
+           @click="bookDetail(img)"
             class='slide-image' 
             mode='aspectFit' 
             v-for='img in top'

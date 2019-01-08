@@ -3,13 +3,7 @@
     <div>id{{bookid}}</div>
     <BookInfo :info="info"></BookInfo>
     <div class="commont">
-      <textarea
-        v-model="comment"
-        placeholder="输入图书评论"
-        class="textarea"
-        :maxlength="100"
-        auto-focus
-      />
+      <textarea v-model="comment" placeholder="输入图书评论" class="textarea" :maxlength="100"/>
       <div class="location">地理位置：
         <switch :checked="location" @change="getGeo" color="#EA5A49"/>
         <span class="text-primary">{{location}}</span>
@@ -19,10 +13,11 @@
         <span class="text-primary">{{phone}}</span>
       </div>
     </div>
+    <button class="btn" @click="addComment">评论</button>
   </div>
 </template>
 <script>
-import { get } from "@/util";
+import { get ,post,showModal } from "@/util";
 import BookInfo from "@/components/BookInfo";
 export default {
   components: {
@@ -34,10 +29,31 @@ export default {
       info: {},
       comment: "",
       location: "",
-      phone: ""
+      phone: "",
+      userinfo: {}
     };
   },
   methods: {
+    addComment() {
+      // 评论 手机型号 地理位置 图书ID 提交人openID
+      // 以上数据均挂在data()上
+      if(!this.comment){
+        return false;
+      }
+      const data = {
+        comment: this.comment,
+        phone: this.phone,
+        location: this.location,
+        bookid: this.bookid,
+        openid: this.userinfo.openId
+      };
+     try{
+         post('/weapp/addcomment',data);
+        this.comment = ""
+     }catch(e){
+        showModal('失败',e.msg)
+     }
+    },
     async getDetail() {
       const info = await get("/weapp/bookdetail", {
         id: this.bookid
@@ -64,16 +80,14 @@ export default {
                 output: "json"
               },
               success: res => {
-                if(res.data.status == 0){
-                  this.location = res.data.result.addressComponent.city
-                console.log(res.data.result.addressComponent);
-          
-                }else{
-                  this.location= "未知地点"
+                if (res.data.status == 0) {
+                  this.location = res.data.result.addressComponent.city;
+                  console.log(res.data.result.addressComponent);
+                } else {
+                  this.location = "未知地点";
                 }
-                    }
+              }
             });
-
             console.log(geo);
           }
         });
@@ -97,6 +111,10 @@ export default {
     let Num = this.$root.$mp.query.id;
     this.bookid = parseInt(Num);
     this.getDetail();
+    const userinfo = wx.getStorageSync("userinfo");
+    if (userinfo) {
+      this.userinfo = userinfo;
+    }
   }
 };
 </script>

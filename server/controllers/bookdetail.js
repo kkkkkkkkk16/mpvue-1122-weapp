@@ -18,7 +18,10 @@ module.exports = async (ctx) => {
     const info = JSON.parse(detail.user_info)
     //increment 累加函数
     ctx.state.data = Object.assign({}, detail, {
+        tags: detail.tags.split(',') ,
+        summary :detail.summary.split('\n'),
         user_info: {
+            
             name:info.nickName,
             image : info.avatarUrl
         }

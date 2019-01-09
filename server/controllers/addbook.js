@@ -16,7 +16,7 @@ module.exports = async (ctx) => {
                     msg: '图书已存在'
                 }
             }
-            console.log(findRes)
+
             return
         }
 
@@ -46,7 +46,6 @@ module.exports = async (ctx) => {
                 }
             }
         }
-        console.log(rate, title, image, alt, publisher, summary, price, tags, author)
     }
 }
 

@@ -12,7 +12,6 @@ module.exports = async (ctx) => {
         .where('id', id)
         .first()
         // 不适用first函数的话，就是返回一个数组，只包含一个数据
-    console.log(detail)
     const info = JSON.parse(detail.user_info)
     // increment 累加函数
     ctx.state.data = Object.assign({}, detail, {

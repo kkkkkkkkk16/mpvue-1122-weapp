@@ -15,11 +15,11 @@ export function showSuccess (text) {
     icon: 'success'
   })
 }
-export function showModal(title,content){
+export function showModal (title, content) {
   wx.showModal({
     title,
     content,
-    showCancel : false
+    showCancel: false
   })
 }
 function request (url, method, data) {
@@ -32,9 +32,9 @@ function request (url, method, data) {
         if (res.data.code === 0) {
           resolve(res)
         } else {
-          //添加重复图书时，提示已经存在图书
+          // 添加重复图书时，提示已经存在图书
 
-          showModal('Warrning',res.data.data.msg)
+          showModal('Warrning', res.data.data.msg)
           reject(res.data)
         }
       }

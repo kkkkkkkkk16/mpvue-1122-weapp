@@ -30,20 +30,20 @@
 </template>
 
 <script>
-import Rate from '@/components/Rate';
+import Rate from '@/components/Rate'
 export default {
 
   components: {
     Rate
   },
-  props: ["info"],
+  props: ['info'],
   // 在computed 中，将info.user_info 传给userinfo（template中的）
   computed: {
-    userinfo() {
-      return this.info.user_info || {};
+    userinfo () {
+      return this.info.user_info || {}
     }
   }
-};
+}
 </script>
 
 <style lang="less" >

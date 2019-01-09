@@ -9,23 +9,23 @@
 </template>
 <script>
 export default {
-  //以对象方法，强制要求验证pr
-  //ops传入参数的数据类型为Number或String
+  // 以对象方法，强制要求验证pr
+  // ops传入参数的数据类型为Number或String
 
   props: {
     value: {
       type: [Number, String],
-      default: "0"
+      default: '0'
     }
   },
-  //计算属性：监控数据变化，将多个数据的变换记性计算
+  // 计算属性：监控数据变化，将多个数据的变换记性计算
   // 实现多数据的双向绑定
   computed: {
-    style() {
-      return `width:${this.value*10}%`;
+    style () {
+      return `width:${this.value * 10}%`
     }
   }
-};
+}
 </script>
 <style lang='scss'>
 .rate{

@@ -3,5 +3,3 @@ import Books from './Books'
 
 const app = new Vue(Books)
 app.$mount()
-
-

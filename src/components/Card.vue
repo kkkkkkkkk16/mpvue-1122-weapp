@@ -25,27 +25,27 @@
   </a>
 </template>
 <script>
-import Rate from "@/components/Rate";
+import Rate from '@/components/Rate'
 
 export default {
-  methods:{
-    preview(){
+  methods: {
+    preview () {
       wx.previewImage({
-        current:this.book.image,
-        urls:[this.book.image]
+        current: this.book.image,
+        urls: [this.book.image]
       })
     }
   },
   computed: {
-    detailUrl() {
-      return "/pages/detail/main?id=" + this.book.id;
+    detailUrl () {
+      return '/pages/detail/main?id=' + this.book.id
     }
   },
   components: {
     Rate
   },
-  props: ["book"]
-};
+  props: ['book']
+}
 </script>
 <style lang='scss' scoped>
 .book-card {
